@@ -4,12 +4,11 @@
 #include "kernel/stat.h"
 #include "user/user.h"
 
-void find(char *path, const char *filename)
-{
-  char buf[512], *p;
-  int fd;
+void find(char *path, const char *filename) {
+  char          buf[512], *p;
+  int           fd;
   struct dirent de;
-  struct stat st;
+  struct stat   st;
 
   if ((fd = open(path, 0)) < 0) {
     fprintf(2, "find: cannot open %s\n", path);
@@ -33,7 +32,7 @@ void find(char *path, const char *filename)
     return;
   }
   strcpy(buf, path);
-  p = buf + strlen(buf);
+  p    = buf + strlen(buf);
   *p++ = '/'; //p指向最后一个'/'之后
   while (read(fd, &de, sizeof de) == sizeof de) {
     if (de.inum == 0)
@@ -54,8 +53,7 @@ void find(char *path, const char *filename)
   close(fd);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
   if (argc != 3) {
     fprintf(2, "usage: find <directory> <filename>\n");
     exit(1);
