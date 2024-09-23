@@ -121,6 +121,7 @@ void syscall(void) {
   int          num;
   struct proc *p = myproc();
 
+  // NOTE: the system call number is in a7
   num = p->trapframe->a7;
   if (num > 0 && num < NELEM(syscalls) && syscalls[num]) {
     // Use num to lookup the system call function for num, call it,
