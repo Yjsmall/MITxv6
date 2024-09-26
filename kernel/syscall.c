@@ -122,6 +122,7 @@ static uint64 (*syscalls[])(void) = {
 };
 
 static char *syscallnames[] = {
+    // NOTE: this is gnu extension grammer for initializing array of strings
     [SYS_fork]    = "fork",
     [SYS_exit]    = "exit",
     [SYS_wait]    = "wait",
