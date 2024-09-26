@@ -7,7 +7,6 @@
 #endif
 #include "user/user.h"
 
-
 //
 // wrapper so that it's OK if main() does not call exit().
 //
@@ -134,9 +133,7 @@ memcpy(void *dst, const void *src, uint n) {
 }
 
 #ifdef LAB_PGTBL
-int
-ugetpid(void)
-{
+int ugetpid(void) {
   struct usyscall *u = (struct usyscall *)USYSCALL;
   return u->pid;
 }

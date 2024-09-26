@@ -73,6 +73,6 @@
 #define USYSCALL (TRAPFRAME - PGSIZE)
 
 struct usyscall {
-  int pid;  // Process ID
+  int pid; // Process ID
 };
 #endif
