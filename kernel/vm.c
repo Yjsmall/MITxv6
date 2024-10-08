@@ -16,8 +16,7 @@ extern char etext[]; // kernel.ld sets this to end of kernel code.
 extern char trampoline[]; // trampoline.S
 
 // Make a direct-map page table for the kernel.
-pagetable_t
-kvmmake(void) {
+pagetable_t kvmmake(void) {
   pagetable_t kpgtbl;
 
   kpgtbl = (pagetable_t)kalloc();
@@ -77,8 +76,7 @@ void kvminithart() {
 //   21..29 -- 9 bits of level-1 index.
 //   12..20 -- 9 bits of level-0 index.
 //    0..11 -- 12 bits of byte offset within the page.
-pte_t *
-walk(pagetable_t pagetable, uint64 va, int alloc) {
+pte_t *walk(pagetable_t pagetable, uint64 va, int alloc) {
   if (va >= MAXVA)
     panic("walk");
 
@@ -99,8 +97,7 @@ walk(pagetable_t pagetable, uint64 va, int alloc) {
 // Look up a virtual address, return the physical address,
 // or 0 if not mapped.
 // Can only be used to look up user pages.
-uint64
-walkaddr(pagetable_t pagetable, uint64 va) {
+uint64 walkaddr(pagetable_t pagetable, uint64 va) {
   pte_t *pte;
   uint64 pa;
 
